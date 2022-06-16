@@ -13,18 +13,7 @@
                 birthday   DATE,
                 first_name VARCHAR(255),
                 last_name  VARCHAR(255),
-                sur_name   VARCHAR(255)
-            );
-
-            CREATE TABLE subsidiary
-            (
-                id           UUID NOT NULL
-                    PRIMARY KEY,
-                mail_address VARCHAR(255),
-                name         VARCHAR(255),
-                manager_id   UUID
-                    CONSTRAINT subsidiary_manager_id_fk
-                        REFERENCES contact
+                patronymic VARCHAR(255)
             );
 
             CREATE TABLE company
@@ -40,6 +29,20 @@
                 general_manager_id UUID
                     CONSTRAINT company_general_manager_id_fk
                         REFERENCES contact
+            );
+
+            CREATE TABLE subsidiary
+            (
+                id           UUID NOT NULL
+                    PRIMARY KEY,
+                mail_address VARCHAR(255),
+                name         VARCHAR(255),
+                manager_id   UUID
+                    CONSTRAINT subsidiary_manager_id_fk
+                        REFERENCES contact,
+                company_id   UUID
+                    CONSTRAINT subsidiary_company_id_fk
+                        REFERENCES company
             );
         </sql>
 

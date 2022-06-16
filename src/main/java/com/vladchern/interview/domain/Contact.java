@@ -41,7 +41,7 @@ public class Contact {
     /**
      * Отчество.
      */
-    private String surName;
+    private String patronymic;
 
     /**
      * День рождения.

@@ -1,5 +1,6 @@
 package com.vladchern.interview.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,11 @@ public class Subsidiary {
      */
     @Id
     private UUID id = UUID.randomUUID();
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    @JsonIgnore
+    private Company company;
 
     /**
      * Наименование.

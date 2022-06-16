@@ -7,9 +7,12 @@ import lombok.experimental.FieldNameConstants;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -64,6 +67,9 @@ public class Company {
     @ManyToOne
     @JoinColumn(name = "general_manager_id")
     private Contact generalManager;
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    private List<Subsidiary> subsidiaries;
 
     @Override
     public boolean equals(Object o) {
