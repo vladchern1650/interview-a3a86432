@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <changeSet id="init_schema" author="vladchern1650@gmail.com">
+        <sql>
+            CREATE TABLE contact
+            (
+                id         UUID NOT NULL
+                    PRIMARY KEY,
+                birthday   DATE,
+                first_name VARCHAR(255),
+                last_name  VARCHAR(255),
+                sur_name   VARCHAR(255)
+            );
+
+            CREATE TABLE subsidiary
+            (
+                id           UUID NOT NULL
+                    PRIMARY KEY,
+                mail_address VARCHAR(255),
+                name         VARCHAR(255),
+                manager_id   UUID
+                    CONSTRAINT subsidiary_manager_id_fk
+                        REFERENCES contact
+            );
+
+            CREATE TABLE company
+            (
+                id                 UUID NOT NULL
+                    PRIMARY KEY,
+                email              VARCHAR(255),
+                full_name          VARCHAR(255),
+                inn                BIGINT,
+                legal_address      VARCHAR(255),
+                ogrn               BIGINT,
+                short_name         VARCHAR(255),
+                general_manager_id UUID
+                    CONSTRAINT company_general_manager_id_fk
+                        REFERENCES contact
+            );
+        </sql>
+
+        <rollback>
+            <sql>
+                drop table if exists company;
+
+                drop table if exists subsidiary;
+
+                drop table if exists contact;
+            </sql>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
