@@ -30,8 +30,11 @@ public class Subsidiary {
     @Id
     private UUID id = UUID.randomUUID();
 
+    /**
+     * Организация, владеющая филиалом.
+     */
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn
     @JsonIgnore
     private Company company;
 
@@ -49,7 +52,7 @@ public class Subsidiary {
      * Сведения о руководителе.
      */
     @ManyToOne
-    @JoinColumn(name = "manager_id")
+    @JoinColumn
     private Contact manager;
 
     @Override

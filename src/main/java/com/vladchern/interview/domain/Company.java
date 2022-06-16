@@ -65,7 +65,7 @@ public class Company {
      * Сведения о генеральном директоре.
      */
     @ManyToOne
-    @JoinColumn(name = "general_manager_id")
+    @JoinColumn
     private Contact generalManager;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
