@@ -16,7 +16,7 @@ import java.util.UUID;
  * REST-контроллер для работы с организациями.
  */
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/companies")
 public class CompanyRestController {
 
     private final CompanyService companyService;
