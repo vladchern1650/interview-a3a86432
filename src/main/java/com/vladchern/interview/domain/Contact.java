@@ -8,6 +8,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
@@ -20,7 +21,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Contact {
+public class Contact implements Serializable {
 
     /**
      * ID.

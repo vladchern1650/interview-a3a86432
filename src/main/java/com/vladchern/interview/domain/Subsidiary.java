@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Subsidiary {
+public class Subsidiary implements Serializable {
 
     /**
      * ID.
